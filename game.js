@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(`Action: ${verb.innerText.trim()} on ${target ? target.id : 'nothing'}`);
 
             if (target) {
-                if (action === 'l' || action === 'u') { // Look or Use
+                if (action === 'l' || action === 'u' || action === 'i') { // Look, Use or Investigate
                     if (target.id === 'sink' && action === 'l') {
                         showModal("Disgusting, needs a cleanup");
                     } else if (target.id === 'window' && action === 'l') {
@@ -180,9 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (target.id === 'spider' && action === 'l') {
                         showModal("Help, there is a monster!");
                     } else if (target.classList.contains('picture') && action === 'l') {
-                        if (target.id === 'picture-2') {
-                            document.getElementById('safe').style.display = 'block';
-                        }
                         const messages = [
                             "I stared at the painting so long the museum lights judged me first",
                             "The sculpture looked back at me like it knew my browser history",
@@ -197,6 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         ];
                         const randomMessage = messages[Math.floor(Math.random() * messages.length)];
                         showModal(randomMessage);
+                    } else if (target.id === 'picture-2' && action === 'i') {
+                        document.getElementById('safe').style.display = 'block';
+                        target.style.display = 'none';
+                        showModal("You found a hidden safe!");
                     } else if (target.id === 'clothes-rack') {
                         showModal("Needs to make friends with a washing machine");
                     } else if (target.id === 'desk') {
@@ -290,6 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('key').style.display = 'none';
         document.getElementById('beer').style.display = 'none';
         document.getElementById('safe').style.display = 'none';
+        document.getElementById('picture-2').style.display = 'block';
         
         console.log('Game Restarted');
     });

@@ -495,7 +495,6 @@ header h1 {
     border: 1px solid #444;
     background-color: #2a2a2a;
     font-size: 1.2rem;
-    text-transform: capitalize;
 }
 
 .verb {
