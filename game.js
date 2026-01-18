@@ -164,9 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target) {
                 if (action === 'l' || action === 'u') { // Look or Use
                     if (target.id === 'sink' && action === 'l') {
-                        showModal("disgusting, needs a cleanup");
+                        showModal("Disgusting, needs a cleanup");
                     } else if (target.id === 'window' && action === 'l') {
-                        showModal("nice view, cars and dirt on the streets");
+                        showModal("Nice view, cars and dirt on the streets");
                     } else if (target.id === 'plant' && action === 'l') {
                         document.getElementById('key').style.display = 'block';
                     } else if (target.id === 'tv') {
@@ -177,6 +177,28 @@ document.addEventListener('DOMContentLoaded', () => {
                         secondsElapsed += 10800; // Add 3 hours
                         updateClock();
                         showModal("Goodnight");
+                    } else if (target.id === 'spider' && action === 'l') {
+                        showModal("Help, there is a monster!");
+                    } else if (target.classList.contains('picture') && action === 'l') {
+                        if (target.id === 'picture-2') {
+                            document.getElementById('safe').style.display = 'block';
+                        }
+                        const messages = [
+                            "I stared at the painting so long the museum lights judged me first",
+                            "The sculpture looked back at me like it knew my browser history",
+                            "I tried to interpret the abstract piece and accidentally reinvented my childhood trauma",
+                            "The museum guide said “notice the brushwork,” but all I noticed was my own confusion",
+                            "I nodded thoughtfully at the artwork even though it clearly nodded back",
+                            "The portrait’s eyes followed me, which felt rude because I wasn’t even doing anything interesting",
+                            "I pretended to understand the installation until the installation pretended to understand me",
+                            "I whispered “wow, profound” at a fire extinguisher before realizing it wasn’t part of the exhibit",
+                            "The audio guide said “take your time,” so I took that personally",
+                            "I looked at the art, the art looked at me, and we both agreed to never speak of it again"
+                        ];
+                        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                        showModal(randomMessage);
+                    } else if (target.id === 'clothes-rack') {
+                        showModal("Needs to make friends with a washing machine");
                     } else if (target.id === 'desk') {
                         const selectedItem = inventory[selectedItemIndex];
                         if (selectedItem && selectedItem.id === 'beer') {
@@ -192,6 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (target.id === 'sink') {
                         target.classList.add('broken');
                         showModal("nice job");
+                    } else if (target.id === 'safe') {
+                        showModal("I need a bomb for this");
                     }
                 } else if (action === 'p') { // Pickup
                     if (target.id === 'key' && target.style.display === 'block') {
@@ -225,6 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (!hasBeer) {
                             beer.style.display = 'block';
                         }
+                    } else if (target.id === 'safe') {
+                        showModal("You need the combination");
+                    } else if (target.id === 'sink' && target.classList.contains('broken')) {
+                        showModal("Looks like a broken sink");
                     }
                 }
             }
@@ -261,6 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('fridge').classList.remove('open');
         document.getElementById('key').style.display = 'none';
         document.getElementById('beer').style.display = 'none';
+        document.getElementById('safe').style.display = 'none';
         
         console.log('Game Restarted');
     });
