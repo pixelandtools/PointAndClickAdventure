@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Escape Room</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Classic Escape Room</h1>
+            <button id="start-btn">Start</button>
+            <button id="restart-btn" disabled>Restart</button>
+        </div>
+        <div class="header-right">
+            <div id="target-display"></div>
+            <div id="game-clock">00:00:00</div>
+            <div class="dropdown">
+                <button class="dropbtn">Help</button>
+                <div class="dropdown-content">
+                    <a href="https://bing.com" target="_blank">Manual</a>
+                    <a href="#" id="about-btn">About</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="game-container">
+        <div id="game-view">
+            <div id="custom-cursor"></div>
+            <!-- Game scene will be here -->
+             <div id="scene-background">
+                <div id="window" class="item clickable"></div>
+                <div id="door" class="item clickable"></div>
+                <div id="bed" class="item clickable"></div>
+                <div id="desk" class="item clickable"></div>
+                <div id="fridge" class="item clickable"></div>
+                <div id="beer" class="item clickable" style="display: none;"></div>
+                <div id="sink" class="item clickable"></div>
+                <div id="plant" class="item clickable"></div>
+                <div id="key" class="item clickable" style="bottom: 18%; right: 26%;"></div>
+                <div id="spider" class="item clickable"></div>
+                <div id="picture-1" class="item picture clickable"></div>
+                <div id="picture-2" class="item picture clickable"></div>
+                <div id="picture-3" class="item picture clickable"></div>
+                <div id="couch" class="item clickable"></div>
+                <div id="tv" class="item clickable"></div>
+                <div id="clothes-rack" class="item clickable"></div>
+             </div>
+        </div>
+        <div id="interaction-wrapper">
+            <div id="interaction-bar">
+                <div class="verb" data-key="p"><span>P</span>ickup</div>
+                <div class="verb" data-key="u"><span>U</span>se</div>
+                <div class="verb" data-key="o"><span>O</span>pen</div>
+                <div class="verb" data-key="b"><span>B</span>reak</div>
+                <div class="verb" data-key="d"><span>D</span>rop</div>
+                <div class="verb" data-key="c"><span>C</span>ombine</div>
+                <div class="verb" data-key="l"><span>L</span>ook</div>
+                <div class="verb" data-key="t"><span>T</span>alk</div>
+                <div class="verb" data-key="g"><span>G</span>ive</div>
+                <!-- Empty slots -->
+                <div class="verb-slot empty"></div>
+                <div class="verb-slot empty"></div>
+                <div class="verb-slot empty"></div>
+            </div>
+            <div id="inventory-container">
+                <div class="inventory-title">Inventory</div>
+                <div id="inventory-list">
+                    <!-- Items will appear here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <p>Classic Escape Room v1</p>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
